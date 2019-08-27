@@ -1,20 +1,24 @@
 import discord
+from discord.ext import commands
 import json
 
 with open('auth.json') as json_file:
     data = json.load(json_file)
     token = data['token']
+with open('config.json') as config_file:
+    data = json.load(config_file)
+    prefix = data['prefix']
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as', self.user)
+bot = commands.Bot(command_prefix='>')
 
-    async def on_message(self, message):
-        # dont respond to ourselves
-        if message.author == self.user:
-            return
-        if message.content == 'ping':
-            await message.channel.send('pong')
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 
-client = MyClient()
-client.run(token)
+@bot.command()
+async def hello(ctx):
+    await ctx.send("%s says Hello, World!" % (ctx.author))
+
+bot.run(token)
+
+
