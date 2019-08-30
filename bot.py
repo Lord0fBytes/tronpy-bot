@@ -11,7 +11,7 @@ with open('config.json') as config_file:
 
 bot = commands.Bot(command_prefix='>')
 
-extensions = ['utilities','gaming']
+extensions = ['utilities','gaming','stream']
 
 @bot.event
 async def on_ready():
