@@ -11,14 +11,21 @@ with open('config.json') as config_file:
 
 bot = commands.Bot(command_prefix='>')
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+extensions = ['utilities','gaming']
 
-@bot.command()
-async def hello(ctx):
-    await ctx.send("%s says Hello, World!" % (ctx.author))
+@bot.event
+async def on_ready():
+    print('Logged in as')
+    print(bot.user.name)
+    print(bot.user.id)
+    print('------')
 
-bot.run(token)
+if __name__ == '__main__':
+    for extension in extensions:
+        try:
+            bot.load_extension(extension)
+        except Exception as error:
+            print('{} cannot be loaded. [{}]'.format(extension,error))
+    bot.run(token)
 
 
