@@ -1,0 +1,21 @@
+{
+    "updates":[
+        {"version":"2.0.0",
+            "title":"Test title #1",
+            "description":"Test of the longer descripton of the first update in thie test.",
+            "type":"major",
+            "developer":"jm",
+            "timestamp":"2019-08-29 12:34:56"},
+        {"version":"1.1.0",
+            "title":"Test title #2",
+            "description":"Test of the longer descripton of the second update in thie test.",
+            "type":"minor",
+            "developer":"jm",
+            "timestamp":"2019-08-27 12:34:56"},
+        {"version":"0.2.3",
+            "title":"Test title #3",
+            "description":"Test of the longer descripton of the thrird update in thie test.",
+            "type":"hotfix",
+            "developer":"jm",
+            "timestamp":"2019-07-20 12:34:56"}]
+}
