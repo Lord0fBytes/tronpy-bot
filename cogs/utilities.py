@@ -32,6 +32,9 @@ class Utilities(commands.Cog):
         '''
         Shows the bots latest update
         '''
+        #Remove the command
+        await ctx.channel.purge(limit=1)
+
         pattern = re.compile("[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
         if version == '0':
             #Get the latest update and store it
@@ -45,6 +48,7 @@ class Utilities(commands.Cog):
                     embed=discord.Embed(title=titleField, description=update['description'], color=0xff0080)
                     embed.add_field(name="Version", value=update['version'], inline=True)
                     embed.add_field(name="Version Type", value=typeField, inline=False)
+                    embed.add_field(name="Developers", value="{}".format(update['developer']), inline=False)
                     embed.set_footer(text="Update provided by WbPyBot | {}".format(datetime.date(datetime.now())))
                     await ctx.send(embed=embed)
                     return
