@@ -6,7 +6,7 @@ from datetime import datetime
 
 data = ''
 
-with open('updates.json') as json_file:
+with open('configs/updates.json') as json_file:
     data = json.load(json_file)
 
 class Utilities(commands.Cog):

@@ -2,16 +2,16 @@ import discord
 from discord.ext import commands
 import json
 
-with open('auth.json') as json_file:
+with open('configs/auth.json') as json_file:
     data = json.load(json_file)
     token = data['token']
-with open('config.json') as config_file:
+with open('configs/config.json') as config_file:
     data = json.load(config_file)
     prefix = data['prefix']
 
 bot = commands.Bot(command_prefix='>')
 
-extensions = ['utilities','gaming','stream']
+extensions = ['cogs.utilities','cogs.gaming','cogs.stream']
 
 @bot.event
 async def on_ready():
