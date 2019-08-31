@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import json
 import re
+from datetime import datetime
 
 data = ''
 
@@ -37,17 +38,19 @@ class Utilities(commands.Cog):
             version = data['updates'][0]['version']
         if pattern.match(version) is not None:
             #Create and send the embed
-            await ctx.send(version)
+            for update in data['updates']:
+                if update['version'] == version:
+                    titleField = "{}    |   {}".format(update['version'],update['title'])
+                    typeField = "{}".format(update['type'])
+                    embed=discord.Embed(title=titleField, description=update['description'], color=0xff0080)
+                    embed.add_field(name="Version", value=update['version'], inline=True)
+                    embed.add_field(name="Version Type", value=typeField, inline=False)
+                    embed.set_footer(text="Update provided by WbPyBot | {}".format(datetime.date(datetime.now())))
+                    await ctx.send(embed=embed)
+                    return
+            await ctx.send("Could not find that version.  #error#")
         else:
             await ctx.send('Invalid version format \{X.Y.Z\}   #error#')
-
-    def outputEmbed(version):
-        #foreach update in data
-        #   check data[i].version == version
-        #         create embed data
-        #         return embed data
-        #return 'Update not found'
-        pass
 
     @commands.command()
     async def show_history(ctx):
