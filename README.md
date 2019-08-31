@@ -1,4 +1,4 @@
-# TronPy Bot (Discord)  ![GitHub package.json version](https://img.shields.io/github/package-json/v/Webtron18/tronpy-bot?style=for-the-badge)
+# TronPy Bot (Discord)  ![GitHub package.json version](https://img.shields.io/github/package-json/version/Webtron18/tronpy-bot?style=for-the-badge)
 My personal bot for my discord server (https://discord.gg/9atDYNG)
 
 
