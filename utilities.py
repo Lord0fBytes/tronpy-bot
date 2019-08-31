@@ -40,7 +40,7 @@ class Utilities(commands.Cog):
             #Create and send the embed
             for update in data['updates']:
                 if update['version'] == version:
-                    titleField = "{}    |   {}".format(update['version'],update['title'])
+                    titleField = "**`{}`\t|\t{}**".format(update['version'],update['title'])
                     typeField = "{}".format(update['type'])
                     embed=discord.Embed(title=titleField, description=update['description'], color=0xff0080)
                     embed.add_field(name="Version", value=update['version'], inline=True)
@@ -53,11 +53,30 @@ class Utilities(commands.Cog):
             await ctx.send('Invalid version format \{X.Y.Z\}   #error#')
 
     @commands.command()
-    async def show_history(ctx):
+    async def show_history(self,ctx,limit=10):
         '''
         Shows the history of updates
         '''
-        await ctx.send(":construction: I'm sorry that command is under contruction right now :construction: ")
+        historyTitle = '__Available History:__\n'
+        historyText = ""
+        # Prechecks to the arguments; need to be number, >0, and less than the number of updates
+        if not isinstance(limit,int):
+            await ctx.send("Invaild `limit` format (number only)  #error#")
+            return
+        if limit < 1:
+            await ctx.send("Number cannot be <= 0  #error#")
+            return
+        if limit > len(data['updates']):
+            limit = len(data['updates'])
+        #Loop through limit values
+        for i in range(0,limit):
+            #define data value (clean purposes)
+            update = data['updates'][i]
+            historyText += "`{}` | {} (_{}_)\n".format(update['version'],update['title'],update['timestamp'])
+        #Create embed text
+        embed=discord.Embed(title=historyTitle, description=historyText, color=0xff0080)
+        embed.set_footer(text="Update provided by WbPyBot | {}".format(datetime.date(datetime.now())))
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(Utilities(client))
