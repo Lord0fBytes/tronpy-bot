@@ -24,9 +24,12 @@ class Gaming(commands.Cog):
             #Rolls the dice
             roll = roll.split('d')
             results = []
+            topRow, botRow, midRow = '','',''
             for x in range(0,int(roll[0])):
-                results.append(random.randint(1,int(roll[1])+1))
-            await ctx.send(results)
+                pick=random.randint(1,int(roll[1]))
+                topRow+="+----+ "
+                midRow+="| "+(' ' if pick<10 else '')+str(pick)+" | "
+            await ctx.send("`"+topRow+"\n"+midRow+"\n"+topRow+"`")
         else:
             await ctx.send("Invalid format: Use XdX format (ie: 1d4 or 2d20")
 

@@ -1,5 +1,11 @@
 {
     "updates":[
+        {"version":"2.2.0",
+            "title":"Minor: New Command `dice` has Been Added",
+            "description":"New dice rolling command is now available. Simply type `>dice #d#` and Webtron will populate the screen with randomly thrown dice.",
+            "type":"Minor",
+            "developer":"@LordOfBytes",
+            "timestamp":"2019-09-03"},
         {"version":"2.1.1",
             "title":"Hotfix01: Fixed Embed Updates Look and Clear Command",
             "description":"Fixed the Embed message look to include the developers (forgot that)\nAdded a clear command to the base code to remove the initial command..",
