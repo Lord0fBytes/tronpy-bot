@@ -4,7 +4,7 @@ My personal bot for my discord server (https://discord.gg/9atDYNG)
 
 ## Categories/Commands ![GitHub package.json dynamic](https://img.shields.io/github/package-json/commands/Webtron18/tronpy-bot?style=plastic)
 ### Gaming:
-  `dice <#d#>`   Rolls dice in XdX format
+  `dice <#d#>`   Rolls dice in XdX format  
   `show_gamers`  Shows current gamers/games
 ### Music:
   `join <channel>`         Bot joins a voice channel  
